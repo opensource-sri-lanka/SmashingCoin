@@ -1,6 +1,13 @@
 const SHA256 = require('crypto-js/sha256') // imported to calculate the hash of each block
 
 class CryptoBlock {
+    /**
+     *
+     * @param {number} index
+     * @param {number} timestamp
+     * @param {string} data
+     * @param {string} precedingHash
+     */
     constructor(index, timestamp, data, precedingHash = " ") {
         // unique number that tracks the position of the block in the chain
         this.index = index;
@@ -15,7 +22,11 @@ class CryptoBlock {
         this.nonce = 0;
 
     }
-    // calculate the hash of the block based on its properties
+
+    /**
+     * calculate the hash of the block based on its properties
+     * @return {SHA256}
+     */
     computeHash() {
         return SHA256(
             this.index +
@@ -25,7 +36,11 @@ class CryptoBlock {
             this.nonce
         ).toString();
     }
-    //algorithm identifies a number such that every block contains leading zeros
+
+    /**
+     * algorithm identifies a number such that every block contains leading zeros
+     * @param {number} difficulty
+     */
     proofOfWork(difficulty) {
         while (
             this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")
