@@ -18,7 +18,7 @@ var gen = rn.generator({
 
 const loadAccountBalance = () => {
     try {
-        const dataBuffer = fs.readFileSync('Accounts/Dinuda.json')
+        const dataBuffer = fs.readFileSync('Accounts/Account.json')
         const dataJSON = dataBuffer.toString()
         return JSON.parse(dataJSON)
 
