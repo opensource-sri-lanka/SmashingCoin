@@ -1,14 +1,16 @@
-{
-  "id": 1,
-  "name": "Dinuda Yaggahahvita",
-  "AccountId": 1000,
-  "AccountType": "Savings",
-  "AccountBalance": 100000
-}
-{
-  "id:": 2,
-  "name": "Lehan Gajanayake",
-  "AccountId": 1001,
-  "AccountType": "Savings",
-  "AccountBalance": 110000
-}
+[
+  {
+    "id": 1,
+    "name": "Dinuda Yaggahahvita",
+    "AccountId": 1000,
+    "AccountType": "Savings",
+    "AccountBalance": 100000
+  },
+  {
+    "id:": 2,
+    "name": "Lehan Gajanayake",
+    "AccountId": 1001,
+    "AccountType": "Savings",
+    "AccountBalance": 110000
+  }
+]

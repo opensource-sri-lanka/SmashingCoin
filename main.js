@@ -3,6 +3,7 @@ const fs = require('fs')
 const chalk = require('chalk')
 const date = require('date-and-time');
 var rn = require('random-number');
+const secureRandom = require('secure-random');
 
 // Files
 const CryptoBlockChain = require('./Models/CryptoBlockChain');
@@ -15,19 +16,18 @@ var gen = rn.generator({
     , max: 1000
     , integer: true
 })
-
-const loadAccountBalance = () => {
-    try {
-        const dataBuffer = fs.readFileSync('Accounts/Account.json')
-        const dataJSON = dataBuffer.toString()
-        return JSON.parse(dataJSON)
-
-    } catch (e) {
-        return []
+const max = Buffer.from("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364140", 'hex');
+let isInvalid = true;
+let privateKey;
+while (isInvalid) {
+    privateKey = secureRandom.randomBuffer(32);
+    if (Buffer.compare(max, privateKey) === 1) {
+        isInvalid = false;
     }
 }
 
 
+console.log('> Private key: ', privateKey.toString('hex'));
 let smashingCoin = new CryptoBlockChain();
 smashingCoin.addNewBlock(new CryptoBlock(gen(500), date.format(now, 'YYYY/MM/DD HH:mm:ss'), { senderId: 1, recipientId: 2, quantity: 50000 }))
 
